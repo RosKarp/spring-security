@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>allProducts</title>
+</head>
+<body>
+<h3>All Products</h3>
+<table>
+  <tr>
+    <td>id</td>
+    <td>Title</td>
+    <td>Price</td>
+  </tr>
+  <th:block th:each="productDto : ${allProducts}">
+    <tr>
+      <td th:text="${productDto.id}"></td>
+      <td th:text="${productDto.title}"></td>
+      <td th:text="${productDto.price}"></td>
+    </tr>
+  </th:block>
+</table>
+</body>
+<body>
+<h2>Product addition</h2>
+<form method="post" th:action="@{'/products/new'}">
+  <span>title</span>
+  <input name="title" type="text">
+  <span>price</span>
+  <input name="price" type="number">
+  <button type="submit">Add</button>
+</form>
+</body>
+<body>
+<h2>Update existing product</h2>
+<form method="post" th:action="@{'/products/update'}">
+  <span>id</span>
+  <input name="id" type="number">
+  <span>title</span>
+  <input name="title" type="text">
+  <span>price</span>
+  <input name="price" type="number">
+  <button type="submit">Update</button>
+</form>
+</body>
+<body>
+<h2>Delete product by id</h2>
+<form method="post" th:action="@{'/products/delete'}">
+  <span>id</span>
+  <input name="id" type="number">
+  <button type="submit">Delete</button>
+</form>
+</body>
+</html>
